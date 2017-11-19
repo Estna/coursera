@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html ng-app="LunchCheck">
+
+<script src="angular.js"></script>
+<script src="app.js"></script>
+
+<body>
+  <div ng-controller="LunchCheckController">
+<textarea ng-model="items"></textarea>
+<button ng-click="Check()">Check If Too Much</button>
+<p> <i>Note:Empty item is not counted towards Check method</i> </p>
+<p ng-model="result">Result:{{result}}</p>
+</div>
+</body>
+</html>
