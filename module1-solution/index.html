@@ -4,13 +4,29 @@
 
 <script src="angular.js"></script>
 <script src="app.js"></script>
+<style>
+.rd {
+    color:red;
+  }
+  .gr {
+      color:green;
+    }
+    .txtbxR {
+       border: red;
+    }
+    .txtbxGr {
+       border: green;
+    }
+</style>
 
 <body>
   <div ng-controller="LunchCheckController">
-<textarea ng-model="items"></textarea>
+<textarea ng-model="items" ng-class="{'txtbxR':result === 'Please enter data first!', 'txtbxGr':
+result === 'Enjoy!' || result === 'Too much!'}"></textarea>
 <button ng-click="Check()">Check If Too Much</button>
 <p> <i>Note:Empty item is not counted towards Check method</i> </p>
-<p ng-model="result">Result:{{result}}</p>
+<p ng-model="result" ng-class="{'rd':result === 'Please enter data first!', 'gr':
+result === 'Enjoy!' || result === 'Too much!'}">Result:{{result}}</p>
 </div>
 </body>
 </html>
