@@ -3,22 +3,10 @@
 angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
-.constant('ApiBasePath', "https://davids-restaurant.herokuapp.com/")
-.directive('foundItems', FoundItems);
+.constant('ApiBasePath', "https://davids-restaurant.herokuapp.com/");
 
-function FoundItems() {
- var ddo = {
-  // template: ''
-  //restrict: 'A',
-  templateUrl: 'foundItems.html',
-  scope: {
-    items: '<myItems',
-    onRemove: '&'
-  }
- };
- return ddo;
-}
 
+//MenuSearchService.$inject['$http', 'ApiBasePath'];
 NarrowItDownController.$inject = ['MenuSearchService'];
 console.log("here");
 
@@ -26,30 +14,19 @@ console.log("here");
 function NarrowItDownController(MenuSearchService){
 var narrowDownCtrl = this;
 narrowDownCtrl.SearchTerm = "";
-narrowDownCtrl.name = "";
-narrowDownCtrl.shortname = "";
-narrowDownCtrl.description = "";
+//narrowDownCtrl.found = MenuSearchService.getItems();
 
 narrowDownCtrl.NarrowDown = function(){
+//narrowDownCtrl.found = [];
+//narrowDownCtrl.found = MenuSearchService.getMatchedMenuItems(narrowDownCtrl.SearchTerm);
 narrowDownCtrl.prom = MenuSearchService.getMatchedMenuItems(narrowDownCtrl.SearchTerm);
-
+//).then(function(result){
+  //console.log(result);
 narrowDownCtrl.prom.then(function (result) {
 console.log(result);
-narrowDownCtrl.found = [];
-for (var i = 0; i < result.length; i++)
-{
-var item = {
-    name: result[i].name,
-    shortName: result[i].short_name,
-    description: result[i].description
-  };
-  narrowDownCtrl.found.push(item);
-}
-var random = narrowDownCtrl.found.length;
-
-});
-
-
+     }, function (errorResponse) {
+         console.log(errorResponse.message);
+       });
 
 narrowDownCtrl.smth = function(){
   console.log("aaa");
@@ -61,11 +38,6 @@ narrowDownCtrl.smth = function(){
 console.log(narrowDownCtrl.found);
 //narrowDownCtrl.found = "";
 console.log("aaa");
-
-narrowDownCtrl.removeItem = function (itemIndex) {
-  narrowDownCtrl.found.splice(itemIndex, 1);
-
-}
 }
 
 MenuSearchService.$inject = ['$http', 'ApiBasePath'];

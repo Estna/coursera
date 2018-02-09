@@ -4,11 +4,30 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="bootstrap.min.css">
       <link rel="stylesheet" href="styles.css">
+      <script src="angular.js"></script>
+      <script src="app.js"></script>
 </head>
 <body>
-<div class="container" ng-controlller="NarrowItDownController as narrowCtrl">
+  <div ng-controller="NarrowItDownController as c">
+<div class="container">
   <h1>Narrow Down Your Chinese Menu Choice</h1>
-</div>
 
+  <div class="form-group">
+    <input type="text" placeholder="search term" ng-model="c.SearchTerm">
+    {{ c.SearchTerm }}
+      <p>{{c.msg}}</p>
+  </div>
+  <div class="form-group narrow-button">
+    <button ng-click="c.NarrowDown()"> Narrow It Down For Me!</button>
+  </br>
+</br>
+  </div>
+        <div>
+          <found-items my-items="c" on-remove="c.removeItem(index)"></found-items>
+
+
+        </div>
+</div>
+</div>
 </body>
 </html>
