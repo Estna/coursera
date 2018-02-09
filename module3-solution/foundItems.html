@@ -1,6 +1,8 @@
+
 <ol>
-  aaaaaaaaaa
-  <li ng-repeat="item in items.found">
-  {{ item.shortName }} - {{item.name}} - {{item.description}}<button ng-click="onRemove({index: $index});">
-    Don't Want This One!</button></li>
+  <li ng-repeat="item in items.found" style="margin:5px;">
+    {{ item.shortName }} - {{item.name}} - {{item.description}}
+    <button class="small-button"ng-click="onRemove({index: $index});">
+    Don't Want This One!</button>  </li>
+
 </ol>
