@@ -1,0 +1,32 @@
+<html ng-app="MenuApp">
+<head>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+
+       <!-- Libraries -->
+       <script src="lib/angular.js"></script>
+        <script src="lib/angular-ui-router.min.js"></script>
+        <!-- <script src="lib/bootstrap.min.js"></script>-->
+
+
+         <!-- Modules -->
+           <script src="src/data.module.js"></script>
+           <script src="src/menuapp.module.js"></script>
+
+
+           <!-- Routes -->
+           <script src="src/routes.js"></script>
+
+           <!-- 'ShoppingList' module artifacts -->
+    <script src="src/categories.component.js"></script>
+    <script src="src/categories.controller.js"></script>
+    <script src="src/menudata.service.js"></script>
+</head>
+
+<body>
+<!-- state reference below that matches the state name-->
+<ui-view></ui-view>
+
+</body>
+
+</html>
