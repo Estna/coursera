@@ -6,7 +6,7 @@
 templateUrl: "src/templates/categories.template.html",
 //controller: 'CategoriesComponentController',
 bindings: {
-  items: '<'
+  catItems: '<'
 }
   }
 );

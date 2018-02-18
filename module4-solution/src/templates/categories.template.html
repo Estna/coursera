@@ -4,8 +4,10 @@
 
 <ul>
 
-  <li ng-repeat="item in $ctrl.items">
-    {{ item }}
+  <li ng-repeat="item in $ctrl.catItems"
+  ui-sref="items({category: item.shortname})">
+  <!--items - name of the state-->
+    {{ item.name }}
   </li>
 </ul>
 

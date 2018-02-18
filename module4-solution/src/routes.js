@@ -22,7 +22,7 @@ $stateProvider.state('home', {
  templateUrl: 'src/templates/main-categories.template.html',
  controller: 'CategoriesController as cat',
  resolve: {
-   items: ['MenuDataService', function (MenuDataService) {
+   catItems: ['MenuDataService', function (MenuDataService) {
   return MenuDataService.getAllCategories();
    }]
  }
@@ -30,8 +30,14 @@ $stateProvider.state('home', {
 })
 
 .state('items', {
-  url: '/items',
-  templateUrl: 'src/items.template.html'
+  url: '/items/{category}',
+  templateUrl: 'src/templates/main-items.template.html',
+  controller: 'MenuItemsController as menu',
+  resolve:{
+    menuItems: ['MenuDataService', '$stateParams',  function(MenuDataService, $stateParams) {
+      return MenuDataService.getItemsForCategory($stateParams.category);
+    }]
+  }
 });
 
 }
